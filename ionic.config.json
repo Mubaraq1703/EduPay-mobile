@@ -1,0 +1,7 @@
+{
+  "name": "edupay-mobile",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

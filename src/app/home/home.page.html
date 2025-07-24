@@ -1,0 +1,119 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>
+      EduPay Mobile
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">EduPay Mobile</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Main Actions -->
+  <div class="main-actions">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          <ion-icon name="globe-outline"></ion-icon>
+          Browser
+        </ion-card-title>
+        <ion-card-subtitle>Access EduPay and other websites</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-button expand="block" fill="solid" color="primary" (click)="openEduPay()">
+          <ion-icon name="school-outline" slot="start"></ion-icon>
+          Open EduPay
+        </ion-button>
+        <ion-button expand="block" fill="outline" color="secondary" (click)="openCustomUrl()">
+          <ion-icon name="link-outline" slot="start"></ion-icon>
+          Open Custom URL
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          <ion-icon name="folder-outline"></ion-icon>
+          File Manager
+        </ion-card-title>
+        <ion-card-subtitle>Download and manage your files</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-button expand="block" fill="solid" color="success" (click)="showDownloadDialog()">
+          <ion-icon name="download-outline" slot="start"></ion-icon>
+          Download File
+        </ion-button>
+        
+        <!-- Storage Info -->
+        <div class="storage-info">
+          <ion-item lines="none">
+            <ion-icon name="hardware-chip-outline" slot="start"></ion-icon>
+            <ion-label>
+              <h3>Storage Used</h3>
+              <p>{{formatFileSize(storageInfo.used)}} of {{formatFileSize(storageInfo.available)}}</p>
+            </ion-label>
+          </ion-item>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <!-- Files List -->
+  <ion-card *ngIf="files.length > 0">
+    <ion-card-header>
+      <ion-card-title>
+        <ion-icon name="documents-outline"></ion-icon>
+        Downloaded Files ({{files.length}})
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item 
+          *ngFor="let file of files" 
+          button="true" 
+          (click)="showFileActions(file)"
+          lines="inset"
+        >
+          <ion-icon 
+            [name]="getFileIcon(file.type)" 
+            slot="start"
+            [color]="getFileIconColor(file.type)"
+          ></ion-icon>
+          <ion-label>
+            <h3>{{file.name}}</h3>
+            <p>{{formatFileSize(file.size)}} • {{formatDate(file.modifiedTime)}}</p>
+          </ion-label>
+          <ion-button 
+            fill="clear" 
+            slot="end"
+            (click)="$event.stopPropagation(); showFileActions(file)"
+          >
+            <ion-icon name="ellipsis-vertical"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Empty State -->
+  <div class="empty-state" *ngIf="files.length === 0 && !isLoading">
+    <ion-icon name="folder-open-outline" size="large"></ion-icon>
+    <h2>No Files Yet</h2>
+    <p>Download files to see them here</p>
+  </div>
+
+  <!-- Loading Spinner -->
+  <div class="loading-container" *ngIf="isLoading">
+    <ion-spinner name="crescent"></ion-spinner>
+    <p>Loading...</p>
+  </div>
+</ion-content>
