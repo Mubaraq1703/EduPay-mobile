@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular'; 
 
 @Component({
   selector: 'app-webview',
@@ -10,6 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['webview.page.scss'],
   imports: [CommonModule, IonicModule]
 })
+
 export class WebviewPage implements OnInit {
   isLoading = true;
   hasError = false;
@@ -40,3 +42,4 @@ export class WebviewPage implements OnInit {
     this.hasError = true;
   }
 }
+
