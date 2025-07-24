@@ -3,7 +3,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 const config: CapacitorConfig = {
   appId: 'com.edupay.mobile',
   appName: 'EduPay Mobile',
-  webDir: 'dist',
+  webDir: 'www',
   server: {
     androidScheme: 'https'
   },

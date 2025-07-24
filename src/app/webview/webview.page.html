@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon name="arrow-back-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>EduPay Platform</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="refresh()">
+        <ion-icon name="refresh-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Loading State -->
+  <div class="loading-container" *ngIf="isLoading">
+    <div class="loading-content">
+      <ion-spinner name="crescent" color="primary"></ion-spinner>
+      <p>Loading EduPay Platform...</p>
+    </div>
+  </div>
+
+  <!-- Error State -->
+  <div class="error-container" *ngIf="hasError">
+    <div class="error-content">
+      <ion-icon name="warning-outline" color="warning"></ion-icon>
+      <h2>Connection Error</h2>
+      <p>Unable to load EduPay. Please check your internet connection.</p>
+      <ion-button color="primary" (click)="refresh()">
+        <ion-icon name="refresh-outline" slot="start"></ion-icon>
+        Try Again
+      </ion-button>
+    </div>
+  </div>
+
+  <!-- WebView Content -->
+  <div class="webview-container" *ngIf="!isLoading && !hasError">
+    <!-- Note: Since iframe won't work, we'll use a redirect approach -->
+    <div class="redirect-content">
+      <div class="redirect-card">
+        <ion-icon name="globe-outline" color="primary"></ion-icon>
+        <h2>Redirecting to EduPay</h2>
+        <p>You will be redirected to the EduPay platform in a moment...</p>
+        <ion-button color="primary" (click)="refresh()">
+          Continue to EduPay
+        </ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>
