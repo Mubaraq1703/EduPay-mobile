@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { Browser } from '@capacitor/browser';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +13,7 @@ import { Browser } from '@capacitor/browser';
 })
 export class HomePage {
   isLoading = false;
+  alertController: any;
 
   // Method 1: Open in system browser but with better UX
   async openEduPayExternal() {
@@ -60,4 +62,16 @@ export class HomePage {
     // This requires routing to a new page
     console.log('Navigate to webview page');
   }
+
+async openResultPortalModal() {
+    const alert = await this.alertController.create({
+      header: 'Coming Soon',
+      message: 'The Result Portal is currently under development and will be available soon!',
+      buttons: ['OK'],
+      cssClass: 'futuristic-alert'
+    });
+
+    await alert.present();
+  }
+
 }

@@ -1,112 +1,74 @@
 <ion-header translucent="true">
-  <ion-toolbar color="primary">
-    <ion-title>
-      <ion-icon name="school-outline" slot="start" style="margin-right: 8px;"></ion-icon>
-      EduPay Mobile
+  <ion-toolbar class="glass-toolbar">
+    <ion-title class="futuristic-title">
+      <ion-icon name="school-outline" slot="start"></ion-icon>
+      EduPay Nexus
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding">
+<ion-content [fullscreen]="true" class="futuristic-bg ion-padding">
   <!-- Hero Section -->
   <div class="hero-section">
-    <div class="hero-content">
-      <ion-icon name="card-outline" class="hero-icon"></ion-icon>
+    <div class="hero-content glass-card">
+      <div class="pulse-animation">
+        <ion-icon name="card-outline" class="hero-icon"></ion-icon>
+      </div>
       <h1 class="hero-title">Welcome to EduPay</h1>
-      <p class="hero-subtitle">Your secure education payment platform</p>
+      <p class="hero-subtitle">Next-gen education platform</p>
+      <div class="animated-underline"></div>
     </div>
     
-    <!-- Feature Cards -->
-    <div class="features-grid">
-      <ion-card class="feature-card">
-        <ion-card-content>
-          <ion-icon name="shield-checkmark-outline" color="success"></ion-icon>
-          <h3>Secure Payments</h3>
-          <p>Bank-grade security for all transactions</p>
-        </ion-card-content>
-      </ion-card>
-      
-      <ion-card class="feature-card">
-        <ion-card-content>
-          <ion-icon name="flash-outline" color="warning"></ion-icon>
-          <h3>Instant Processing</h3>
-          <p>Quick and efficient payment processing</p>
-        </ion-card-content>
-      </ion-card>
-      
-      <ion-card class="feature-card">
-        <ion-card-content>
-          <ion-icon name="receipt-outline" color="tertiary"></ion-icon>
-          <h3>Digital Receipts</h3>
-          <p>Automatic receipt generation and storage</p>
-        </ion-card-content>
-      </ion-card>
-      
-      <ion-card class="feature-card">
-        <ion-card-content>
-          <ion-icon name="people-outline" color="secondary"></ion-icon>
-          <h3>Multi-User Support</h3>
-          <p>Manage multiple student accounts</p>
-        </ion-card-content>
-      </ion-card>
-    </div>
-
     <!-- Action Buttons -->
     <div class="action-buttons">
       <ion-button 
         expand="block" 
         size="large"
-        color="primary" 
-        class="main-button"
+        class="futuristic-btn payment-portal"
         (click)="openEduPay()"
         [disabled]="isLoading">
-        <ion-icon name="open-outline" slot="start"></ion-icon>
-        <span *ngIf="!isLoading">Launch EduPay Platform</span>
-        <ion-spinner name="crescent" *ngIf="isLoading"></ion-spinner>
+        <ion-icon name="wallet-outline" slot="start"></ion-icon>
+        <span *ngIf="!isLoading">Payment Portal</span>
+        <ion-spinner name="circular" *ngIf="isLoading"></ion-spinner>
       </ion-button>
       
       <ion-button 
         expand="block" 
-        fill="outline" 
         size="large"
-        color="primary" 
-        class="secondary-button"
-        (click)="navigateToEduPay()">
-        <ion-icon name="globe-outline" slot="start"></ion-icon>
-        Open EduPay (Direct)
-      </ion-button>
-
-      <!-- Alternative option -->
-      <ion-button 
-        expand="block" 
-        fill="clear" 
-        size="small"
-        color="medium" 
-        class="tertiary-button"
-        (click)="openEduPayExternal()">
-        <ion-icon name="launch-outline" slot="start"></ion-icon>
-        Open in Browser
+        class="futuristic-btn result-portal"
+        (click)="openResultPortalModal()">
+        <ion-icon name="bar-chart-outline" slot="start"></ion-icon>
+        Result Portal
       </ion-button>
     </div>
 
-    <!-- Quick Stats -->
-    <div class="stats-section">
+    <!-- Stats Section - Updated Design -->
+    <div class="stats-section glass-card">
       <ion-grid>
         <ion-row>
           <ion-col size="4">
             <div class="stat-item">
+              <div class="stat-icon">
+                <ion-icon name="time-outline"></ion-icon>
+              </div>
               <h2>24/7</h2>
               <p>Support</p>
             </div>
           </ion-col>
           <ion-col size="4">
             <div class="stat-item">
+              <div class="stat-icon">
+                <ion-icon name="shield-checkmark-outline"></ion-icon>
+              </div>
               <h2>100%</h2>
               <p>Secure</p>
             </div>
           </ion-col>
           <ion-col size="4">
             <div class="stat-item">
+              <div class="stat-icon">
+                <ion-icon name="people-outline"></ion-icon>
+              </div>
               <h2>1M+</h2>
               <p>Users</p>
             </div>
@@ -114,18 +76,14 @@
         </ion-row>
       </ion-grid>
     </div>
+  </div>
 
-    <!-- Info Card -->
-    <ion-card class="info-card">
-      <ion-card-content>
-        <div class="info-content">
-          <ion-icon name="information-circle-outline" color="primary"></ion-icon>
-          <div>
-            <h3>Seamless Experience</h3>
-            <p>EduPay will open in the same tab for a smooth, uninterrupted experience.</p>
-          </div>
-        </div>
-      </ion-card-content>
-    </ion-card>
+  <!-- Floating Particles Background -->
+  <div class="particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
   </div>
 </ion-content>
