@@ -63,5 +63,5 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.8.0"
   },
-  "description": "An Ionic project"
+  "description": "EduPay Mobile - A hybrid mobile application built with Ionic Angular for seamless access to the EduPay educational payment platform, featuring in-app browsing, file management, and native device integration."
 }
