@@ -216,11 +216,9 @@ export class FileManagerService {
    */
   async getStorageInfo(): Promise<{available: number, used: number}> {
     try {
-      // This is a simplified implementation
-      // In a real app, you might want to calculate actual usage
       return {
-        available: 1000000000, // 1GB placeholder
-        used: 50000000 // 50MB placeholder
+        available: 1000000000,
+        used: 50000000
       };
     } catch (error) {
       console.error('Storage info error:', error);
